@@ -51,8 +51,9 @@
 
                 if (option == "Exit")
                 {
+                    Console.Write($"{prefix} ");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"{prefix} <<{option}>>");
+                    Console.WriteLine($"<<{option}>>");
                     Console.ResetColor();
                 } else Console.WriteLine($"{prefix} <<{option}>>");
             }
