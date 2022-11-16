@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console Game", "Console Game\Console Game.csproj", "{663DE57E-4AF8-4FE6-9699-9DD310E2254B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{F8E1FA72-4054-4CAD-94CE-471A8E00D7A8}"
+	ProjectSection(SolutionItems) = preProject
+		Значок1.ico = Значок1.ico
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{663DE57E-4AF8-4FE6-9699-9DD310E2254B}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{663DE57E-4AF8-4FE6-9699-9DD310E2254B}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{663DE57E-4AF8-4FE6-9699-9DD310E2254B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663DE57E-4AF8-4FE6-9699-9DD310E2254B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD3D43AB-6336-4A3E-ADFC-1F024A175CEB}
+	EndGlobalSection
+EndGlobal
