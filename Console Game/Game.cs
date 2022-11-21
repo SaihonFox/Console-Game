@@ -5,6 +5,12 @@ namespace Console_Game
 {
     class Game
     {
+        static char PlayerChar = '☺';
+        static char DoorChar   = 'D';
+        static char WallChar   = 'W';
+        static char CoinChar   = 'C';
+        static char SpaceChar  = ' ';
+
         int playerCoordsRow = 1;
         int playerCoordsIndex = 5;
 
@@ -16,24 +22,24 @@ namespace Console_Game
 
         static string[] mapCopy =
         {
-            "-----------",
-            "-----P-----",
-            "----WWWWW--",
-            "----W---W--",
-            "----D---W--",
-            "----WWWWW--",
-            "-----------"
+            "           ",
+            " C   ☺     ",
+            "    WWWWW  ",
+            "    W  EW  ",
+            " C  D   W  ",
+            "CC  WWWWW  ",
+            "     C     "
         };
 
         List<string> mapL = new List<string>()
         {
-            "-----------",
-            "-C---P-----",
-            "----WWWWW--",
-            "----W--EW--",
-            "-C--D---W--",
-            "CC--WWWWW--",
-            "-----C-----"
+            "           ",
+            " C   ☺     ",
+            "    WWWWW  ",
+            "    W  EW  ",
+            " C  D   W  ",
+            "CC  WWWWW  ",
+            "     C     "
         };
 
         List<int[]> doorsCoords = new List<int[]>();
@@ -49,17 +55,28 @@ namespace Console_Game
             mapL = map.ToList();
         }
 
-        public void Start()
+        public void Start(List<string>? level)
         {
+            if(level != null) mapL = level;
+
             Console.Clear();
 
             for (int i = 0; i < mapL.Count; i++)
                 for (int j = 0; j < mapL[i].Length; j++)
-                    if (mapL[i][j] == 'D')
+                    if (mapL[i][j] == PlayerChar)
+                    {
+                        playerCoordsRow = i;
+                        playerCoordsIndex = j;
+                        break;
+                    }
+
+            for (int i = 0; i < mapL.Count; i++)
+                for (int j = 0; j < mapL[i].Length; j++)
+                    if (mapL[i][j] == DoorChar)
                         doorsCoords.Add(new int[] { i, j });
             for (int i = 0; i < mapL.Count; i++)
                 for (int j = 0; j < mapL[i].Length; j++)
-                    if (mapL[i][j] == 'C')
+                    if (mapL[i][j] == CoinChar)
                         coinsCoords.Add(new int[] { i, j });
 
             Run();
@@ -82,13 +99,13 @@ namespace Console_Game
                     {
                         switch (elem)
                         {
-                            case 'P':
+                            case '☺':
                                 Console.ForegroundColor = Defaults.Player;
-                                Console.BackgroundColor = Defaults.Player;
+                                Console.BackgroundColor = ConsoleColor.Black;
                                 Console.Write(elem);
                                 Console.ResetColor();
                                 break;
-                            case '-':
+                            case ' ':
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 Console.Write(elem);
                                 Console.ResetColor();
@@ -129,9 +146,9 @@ namespace Console_Game
                 Console.WriteLine();
                 Console.WriteLine("Coins - " + coins);
                 Console.WriteLine();
-                Console.WriteLine(Colorize("P", Defaults.Player, Defaults.Player) + " - Player");
+                Console.WriteLine(Colorize("☺", Defaults.Player) + " - Player");
                 Console.WriteLine(Colorize("W", Defaults.Wall, Defaults.Wall) + " - Wall");
-                Console.WriteLine(Colorize("-", ConsoleColor.Black) + " - Free Space");
+                Console.WriteLine(Colorize(" ", ConsoleColor.Black) + " - Free Space");
                 Console.WriteLine(Colorize("D", Defaults.Door, Defaults.Door) + " - Door");
                 Console.WriteLine(Colorize("C", Defaults.Coin, Defaults.Coin) + " - Coin");
                 Console.WriteLine(Colorize("E", Defaults.Exit, Defaults.Exit) + " - Exit");
@@ -142,14 +159,14 @@ namespace Console_Game
                 {
                     if (playerCoordsRow != 0)
                     {
-                        if (mapL[playerCoordsRow - 1][playerCoordsIndex] != 'W')
+                        if (mapL[playerCoordsRow - 1][playerCoordsIndex] != WallChar)
                         {
-                            if(mapL[playerCoordsRow - 1][playerCoordsIndex] == 'C') coins++;
+                            if(mapL[playerCoordsRow - 1][playerCoordsIndex] == CoinChar) coins++;
 
                             System.Text.StringBuilder lineUp = new System.Text.StringBuilder(mapL[playerCoordsRow - 1]);
-                            lineUp[playerCoordsIndex] = 'P';
+                            lineUp[playerCoordsIndex] = PlayerChar;
                             System.Text.StringBuilder line = new System.Text.StringBuilder(mapL[playerCoordsRow]);
-                            line[playerCoordsIndex] = '-';
+                            line[playerCoordsIndex] = SpaceChar;
                             mapL[playerCoordsRow - 1] = lineUp.ToString();
                             mapL[playerCoordsRow] = line.ToString();
 
@@ -157,7 +174,7 @@ namespace Console_Game
                             {
                                 if (iCoords[0] == playerCoordsRow && iCoords[1] == playerCoordsIndex)
                                 {
-                                    line[playerCoordsIndex] = 'D';
+                                    line[playerCoordsIndex] = DoorChar;
                                     mapL[playerCoordsRow] = line.ToString();
                                 }
                             }
@@ -170,14 +187,14 @@ namespace Console_Game
                 {
                     if (playerCoordsRow != mapL.Count - 1)
                     {
-                        if (mapL[playerCoordsRow + 1][playerCoordsIndex] != 'W')
+                        if (mapL[playerCoordsRow + 1][playerCoordsIndex] != WallChar)
                         {
-                            if (mapL[playerCoordsRow + 1][playerCoordsIndex] == 'C') coins++;
+                            if (mapL[playerCoordsRow + 1][playerCoordsIndex] == CoinChar) coins++;
 
                             System.Text.StringBuilder lineDown = new System.Text.StringBuilder(mapL[playerCoordsRow + 1]);
-                            lineDown[playerCoordsIndex] = 'P';
+                            lineDown[playerCoordsIndex] = PlayerChar;
                             System.Text.StringBuilder line = new System.Text.StringBuilder(mapL[playerCoordsRow]);
-                            line[playerCoordsIndex] = '-';
+                            line[playerCoordsIndex] = SpaceChar;
                             mapL[playerCoordsRow + 1] = lineDown.ToString();
                             mapL[playerCoordsRow] = line.ToString();
 
@@ -185,7 +202,7 @@ namespace Console_Game
                             {
                                 if (iCoords[0] == playerCoordsRow && iCoords[1] == playerCoordsIndex)
                                 {
-                                    line[playerCoordsIndex] = 'D';
+                                    line[playerCoordsIndex] = DoorChar;
                                     mapL[playerCoordsRow] = line.ToString();
                                 }
                             }
@@ -198,20 +215,20 @@ namespace Console_Game
                 {
                     if (playerCoordsIndex != mapL[0].Length - 1)
                     {
-                        if (mapL[playerCoordsRow][playerCoordsIndex + 1] != 'W')
+                        if (mapL[playerCoordsRow][playerCoordsIndex + 1] != WallChar)
                         {
-                            if (mapL[playerCoordsRow][playerCoordsIndex + 1] == 'C') coins++;
+                            if (mapL[playerCoordsRow][playerCoordsIndex + 1] == CoinChar) coins++;
 
                             System.Text.StringBuilder lineRight = new System.Text.StringBuilder(mapL[playerCoordsRow]);
-                            lineRight[playerCoordsIndex + 1] = 'P';
-                            lineRight[playerCoordsIndex] = '-';
+                            lineRight[playerCoordsIndex + 1] = PlayerChar;
+                            lineRight[playerCoordsIndex] = SpaceChar;
                             mapL[playerCoordsRow] = lineRight.ToString();
 
                             foreach (int[] iCoords in doorsCoords)
                             {
                                 if (iCoords[0] == playerCoordsRow && iCoords[1] == playerCoordsIndex)
                                 {
-                                    lineRight[playerCoordsIndex] = 'D';
+                                    lineRight[playerCoordsIndex] = DoorChar;
                                     mapL[playerCoordsRow] = lineRight.ToString();
                                 }
                             }
@@ -224,20 +241,20 @@ namespace Console_Game
                 {
                     if (playerCoordsIndex != 0)
                     {
-                        if (mapL[playerCoordsRow][playerCoordsIndex - 1] != 'W')
+                        if (mapL[playerCoordsRow][playerCoordsIndex - 1] != WallChar)
                         {
-                            if (mapL[playerCoordsRow][playerCoordsIndex - 1] == 'C') coins++;
+                            if (mapL[playerCoordsRow][playerCoordsIndex - 1] == CoinChar) coins++;
 
                             System.Text.StringBuilder lineRight = new System.Text.StringBuilder(mapL[playerCoordsRow]);
-                            lineRight[playerCoordsIndex - 1] = 'P';
-                            lineRight[playerCoordsIndex] = '-';
+                            lineRight[playerCoordsIndex - 1] = PlayerChar;
+                            lineRight[playerCoordsIndex] = SpaceChar;
                             mapL[playerCoordsRow] = lineRight.ToString();
 
                             foreach (int[] iCoords in doorsCoords)
                             {
                                 if (iCoords[0] == playerCoordsRow && iCoords[1] == playerCoordsIndex)
                                 {
-                                    lineRight[playerCoordsIndex] = 'D';
+                                    lineRight[playerCoordsIndex] = DoorChar;
                                     mapL[playerCoordsRow] = lineRight.ToString();
                                 }
                             }

@@ -1,12 +1,14 @@
-﻿namespace Console_Game
+﻿using static Console_Game.Helper;
+
+namespace Console_Game
 {
     class Menu
     {
         public static int CurrentTitle = 0; // 0 - default title. other number is index+1 of title in Assets/Title
         public static int CurrentOption = 0;
 
-        private string[] options = { "Start", "Create Assets Folders", "Exit" };
-        private bool assetsCreated = false;
+        string[] options = { "Start", "Create Assets Folders", "Exit" };
+        bool assetsCreated = false;
 
         public void Start()
         {
@@ -95,7 +97,7 @@
             } else
             {
                 options[1] = "Settings";
-                Run();
+                new Settings().Start();
             }
         }
 

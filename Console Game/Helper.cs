@@ -9,5 +9,14 @@
                 text += str;
             return text;
         }
+
+        public static string Colorize(string text, ConsoleColor foregroundColor, ConsoleColor backgroundColor = ConsoleColor.Black)
+        {
+            Console.ForegroundColor = foregroundColor;
+            Console.BackgroundColor = backgroundColor;
+            Console.Write(text);
+            Console.ResetColor();
+            return "";
+        }
     }
 }
