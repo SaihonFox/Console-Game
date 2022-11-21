@@ -63,13 +63,13 @@
       <dsig:DigestValue>KhcK3GmHMDoxiWA7FxoBPb0Pm42mVfyG8txLpF9sw4s=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Console Game.exe" size="376683">
+  <file name="Console Game.exe" size="378731">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>kT1SyRGaVZkIz5m8oUdAA0+8GDbkAbhWWWqvbT/acg4=</dsig:DigestValue>
+      <dsig:DigestValue>pabg9FY0z+vgPEeMNSnoGu0wN7Gq2WyhwHHbAEiS2rI=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
