@@ -1,5 +1,0 @@
-C:\Users\ILNAR\source\repos\Console Game\Console Game\bin\Release\net6.0\publish\Console Game.exe
-C:\Users\ILNAR\source\repos\Console Game\Console Game\bin\Release\net6.0\publish\Console Game.dll
-C:\Users\ILNAR\source\repos\Console Game\Console Game\bin\Release\net6.0\publish\Console Game.runtimeconfig.json
-C:\Users\ILNAR\source\repos\Console Game\Console Game\bin\Release\net6.0\publish\Console Game.pdb
-C:\Users\ILNAR\source\repos\Console Game\Console Game\bin\Release\net6.0\publish\Console Game.deps.json

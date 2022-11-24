@@ -1,2 +1,0 @@
-C:\Users\ILNAR\source\repos\Console Game\Console Game\bin\publish\Console Game.pdb
-C:\Users\ILNAR\source\repos\Console Game\Console Game\bin\publish\Console Game.exe
